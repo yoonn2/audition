@@ -1,36 +1,48 @@
 function registInout() {
     const form = document.inoutForm;
-    const p_code = form.p_code.value;
-    const t_cnt = form.t_cnt.value;
-    const t_date = form.t_date.value;
-    const c_code = form.c_code.value;
+    const artist_id = form.artist_id.value;
+    const artist_name = form.artist_name.value;
+    const artist_birth = form.artist_birth.value;
+    const artist_gender = form.artist_gender.value;
+    const talent = form.talent.value;
+    const agency = form.agency.value;
 
-    if(p_code == "") {
-        window.alert("제품코드가 입력되지 않았습니다!");
-        form.p_code.focus();
+    if(artist_id == "") {
+        window.alert("참가번호가 입력되지 않았습니다!");
+        form.artist_id.focus();
         return;
     }
-    if(t_cnt == "") {
-            window.alert("수량이 입력되지 않았습니다!");
-            form.t_cnt.focus();
+    if(artist_name == "") {
+            window.alert("참가자명이 입력되지 않았습니다!");
+            form.artist_name.focus();
             return;
     }
-    if(t_date == "") {
-            window.alert("거래일자가 입력되지 않았습니다!");
-            form.t_date.focus();
+     if (artist_birth == "") {
+            window.alert("생년월일이 입력되지 않았습니다!");
+            form.artist_birth.focus();
             return;
     }
-    if(c_code == "") {
-            window.alert("거래처를 선택하세요!");
-            form.c_code.focus();
+    if(artist_gender == "") {
+            window.alert("성별이 선택되지 않았습니다!");
+            form.artist_gender.focus();
             return;
     }
-    window.alert("입출고 등록이 정상적으로 등록되었습니다!");
+    if(talent == "") {
+            window.alert("특기가 선택되지 않았습니다!");
+            form.talent.focus();
+            return;
+    }
+    if(agency == "") {
+            window.alert("소속사가 입력되지 않았습니다!");
+            form.agency.focus();
+            return;
+    }
+    window.alert("오디션 등록이 정상적으로 등록되었습니다!");
     form.submit();
 }
 function resetForm(){
     const form = document.inoutForm;
     window.alert("정보를 지우고 처음부터 다시 입력 합니다.");
     form.reset();
-    form.p_code.focus();
+    form.artist_id.focus();
 }

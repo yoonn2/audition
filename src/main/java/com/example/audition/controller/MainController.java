@@ -1,12 +1,16 @@
 package com.example.audition.controller;
 
 import com.example.audition.dto.ArtistDto;
+import com.example.audition.dto.MentoDto;
+import com.example.audition.dto.MentorScoreDto;
+import com.example.audition.dto.RankingDto;
 import com.example.audition.service.MainService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -22,14 +26,33 @@ public class MainController {
     }
 
     @GetMapping("/register")
-    public List<ArtistDto> getAllArtists() {
-        return mainService.getAllArtists();
+    public String getAllArtists() {
+         mainService.getAllArtists();
+         return "register";
     }
-
-
     @PostMapping("/regist")
-    public String registerArtist(@RequestBody ArtistDto artistDto) {
+    public String registerArtist(ArtistDto artistDto) {
         mainService.registerArtist(artistDto);
         return "index";
+    }
+    @GetMapping("/list")
+    public String showArtistList(Model model) {
+        List<ArtistDto> artists = mainService.getAllArtists();
+        model.addAttribute("artists", artists);
+        return "list";
+    }
+
+    @GetMapping("/score")
+    public String getMentorScores(Model model) {
+        List<MentorScoreDto> mentorScores = mainService.getMentorScores();
+        model.addAttribute("mentorScores", mentorScores);
+        return "score";
+    }
+
+    @GetMapping("/ranking")
+    public String getRanking(Model model) {
+        List<RankingDto> rankings = mainService.getRanking();
+        model.addAttribute("rankings", rankings);
+        return "ranking";
     }
 }

@@ -1,0 +1,30 @@
+<html layout:decorate="~{layout}">
+    <div layout:fragment="content" id="contents">
+        <meta charset="UTF-8">
+        <title>참가자 목록 조회</title>
+
+        <section>
+            <br>
+            <h1>참가자 목록 조회</h1>
+            <br>
+            <table border="1">
+                <tr>
+                    <th class="size-100 align-center">참가번호</th>
+                    <th class="size-100 align-center">참가자명</th>
+                    <th class="size-150 align-center">성별</th>
+                    <th class="size-100 align-center">총점</t>
+                    <th class="size-100 align-center">평균</th>
+                    <th class="size-150 align-center">등수</th>
+                </tr>
+                <tr th:each="dto : ${rankings}">
+                    <td class="align-center" th:text="${dto.artist_id}"></td>
+                    <td class="align-center" th:text="${dto.artist_name}"></td>
+                    <td class="align-center" th:text="${dto.artist_gender == 'M' ? '남성' : '여성'}"></td>
+                    <td class="align-center" th:text="${dto.total_score}"></td>
+                    <td class="align-center" th:text="${#numbers.formatDecimal(dto.average_score, 2, 2)}"></td>
+                    <td class="align-center" th:text="${dto.rank}"></td>
+                </tr>
+            </table>
+        </section>
+    </div>
+</html>

@@ -1,0 +1,37 @@
+<html layout:decorate="~{layout}">
+    <div layout:fragment="content" id="contents">
+        <meta charset="UTF-8">
+        <title>참가자 목록 조회</title>
+
+        <section>
+            <br>
+            <h1>참가자 목록 조회</h1>
+            <br>
+            <table>
+                <tr>
+                    <th class="size-100 align-center">참가번호</th>
+                    <th class="size-100 align-center">참가자명</th>
+                    <th class="size-150 align-center">생년월일</th>
+                    <th class="size-100 align-center">성별</th>
+                    <th class="size-100 align-center">특기</th>
+                    <th class="size-150 align-center">소속사</th>
+                </tr>
+                <tr th:each="dto : ${artists}"
+                    th:with="birthYear=${dto.artist_birth.substring(0, 4)},
+                             birthMonth=${dto.artist_birth.substring(4, 6)},
+                             birthDay=${dto.artist_birth.substring(6, 8)}">
+                    <td class="align-center" th:text="${dto.artist_id}"></td>
+                    <td class="align-center" th:text="${dto.artist_name}"></td>
+                    <td class="align-center" th:text="${birthYear} + '년 ' + ${birthMonth} + '월 ' + ${birthDay} + '일'"></td>
+                    <td class="align-center" th:text="${dto.artist_gender == 'M' ? '남성' : '여성'}"></td>
+                    <td class="align-center">
+                        <span th:if="${dto.talent == '1'}">댄스</span>
+                        <span th:if="${dto.talent == '2'}">랩</span>
+                        <span th:if="${dto.talent == '3'}">노래</span>
+                    </td>
+                    <td class="align-center" th:text="${dto.agency}"></td>
+                </tr>
+            </table>
+        </section>
+    </div>
+</html>
