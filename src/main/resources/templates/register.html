@@ -1,0 +1,64 @@
+<html layout:decorate="~{layout}">
+    <div layout:fragment="content" id="contents">
+        <meta charset="UTF-8">
+        <link href="../css/style.css" rel="stylesheet">
+        <script src="../js/script.js"></script>
+        <section>
+            <br>
+            <h1>오디션 등록</h1>
+            <br>
+            <form name="inoutForm" action="regist" method="post">
+                <table>
+                    <tr>
+                        <td class="align-center size-150">참가번호</td>
+                        <td class="size-400">
+                            <input type="text" name="artist_id" th:value="${nextno}">*참가번호는(A000)4자리입니다.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-center">참가자명</td>
+                        <td>
+                            <input type="text" name="artist_name">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-center">생년월일</td>
+                        <td>
+                            <input type="text" name="artist_birth">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-center">성별</td>
+                        <td>
+                            <input type="radio" name="artist_gender" value="M">남성
+                            <input type="radio" name="artist_gender" value="F">여성
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-center">특기</td>
+                        <td>
+                            <select name="talent">
+                                <option value="" selected>특기선택</option>
+                                <option value="1">댄스</option>
+                                <option value="2">랩</option>
+                                <option value="3">노래</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-center">소속사</td>
+                        <td>
+                            <input type="text" name="agency">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="align-center" colspan=2>
+                            <input type="button" onclick="registInout()" value="입출고등록">
+                            <input type="reset" onclick="resetForm()" value="다시쓰기">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </section>
+    </div>
+</html>
